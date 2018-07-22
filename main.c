@@ -17,7 +17,7 @@ void writeMatrixInFile(char* file_name, int A[M][N])
 	FILE* file;
 
 	if ((file = fopen(file_name, "w")) == NULL)
-		printf("Не удалось открыть файл для записи\n");
+		printf("Could not open file for writing\n");
 
 	for (int i = 0; i < M; i++)
 	{
@@ -28,7 +28,7 @@ void writeMatrixInFile(char* file_name, int A[M][N])
 	}
 
 	if (fclose(file) != 0)
-		printf("Ошибка закрытия файла для записи\n");
+		printf("Error closing file for writing\n");
 }
 
 void writeCountFile(char* file_result, int count)
@@ -36,12 +36,12 @@ void writeCountFile(char* file_result, int count)
 	FILE* file;
 
 	if (((file = fopen(file_result, "w")) == NULL))
-		printf("Не удалось открыть файл для записи\n");
+		printf("Could not open file for writing\n");
 
-	fprintf(file, "Количество локальных минимумов в матрице 10 х 13: %d\n", count);
+	fprintf(file, "The number of local minimum in the matrix is 10 x 13: %d\n", count);
 
 	if (fclose(file) != 0)
-		printf("Ошибка закрытия файла для записи\n");
+		printf("Error closing file for writing\n");
 }
 
 
@@ -92,7 +92,7 @@ int countLocalMins(int A[M][N])
 
 void main()
 {
-	UINT old_in = GetConsoleCP();
+	UINT old_in = GetConsoleCP();	//for the Russian language
 	UINT old_out = GetConsoleOutputCP();
 
 	SetConsoleCP(1251);
@@ -100,13 +100,13 @@ void main()
 
 	int A[M][N], count;
 
-	printf("Введите матрицу:\n");
+	printf("Enter the matrix:\n");
 	enterMatrix(A);
 	writeMatrixInFile("file.txt", A);
 
 	count = countLocalMins(A);
 
-	printf("Количество локальных минимумов: %d\n", count);
+	printf("Number of local minimum: %d\n", count);
 	writeCountFile("result.txt", count);
 
 	SetConsoleCP(old_in);
